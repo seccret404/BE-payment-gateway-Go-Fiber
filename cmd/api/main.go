@@ -6,6 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
 	"github.com/seccret404/BE-payment-gateway-Go-Fiber/config"
+	// "github.com/seccret404/BE-payment-gateway-Go-Fiber/models"
 )
 
 func main() {
@@ -14,6 +15,7 @@ func main() {
 		log.Fatal("Cannot load file .env")
 	}
 	config.ConnectDB()
+	// models.Migrate()
 
 	app := fiber.New()
 
