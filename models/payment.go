@@ -11,7 +11,7 @@ type Payment struct {
 	gorm.Model
 	ID            uuid.UUID      `gorm:"type:uuid;primaryKey" json:"id"`
 	OrderID       string         `gorm:"uniqueIndex" json:"order_id"`
-	ProductID     string         `json:"product_id"`
+	ProductID     int         `json:"product_id"`
 	Quantity      int            `json:"quantity"`       
 	CustomerName  string         `json:"customer_name"`
 	CustomerEmail string         `json:"customer_email"`
@@ -22,4 +22,12 @@ type Payment struct {
 	PaidAt        *time.Time     `json:"paid_at"`        	
 	CreatedAt     time.Time      `json:"created_at"`
 	UpdatedAt     time.Time      `json:"updated_at"`
+}
+
+type PaymentRequest struct {
+	ProductID     int `json:"product_id"`
+	Quantity      int    `json:"quantity"`
+	CustomerName  string `json:"customer_name"`
+	CustomerEmail string `json:"customer_email"`
+	Price         float64  `json:"price"`
 }
