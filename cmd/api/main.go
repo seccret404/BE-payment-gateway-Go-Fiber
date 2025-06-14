@@ -8,7 +8,6 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/seccret404/BE-payment-gateway-Go-Fiber/config"
 	"github.com/seccret404/BE-payment-gateway-Go-Fiber/routes"
-	"gorm.io/gorm"
 	// "github.com/seccret404/BE-payment-gateway-Go-Fiber/models"
 )
 
