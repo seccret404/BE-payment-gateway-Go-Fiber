@@ -6,9 +6,9 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
-	"github.com/seccret404/BE-payment-gateway-Go-Fiber/config"
-	"github.com/seccret404/BE-payment-gateway-Go-Fiber/routes"
-	// "github.com/seccret404/BE-payment-gateway-Go-Fiber/models"
+	"app/config"
+	"app/routes"
+	"app/models"
 )
 
 
@@ -19,7 +19,7 @@ func main() {
 		log.Fatal("Cannot load file .env")
 	}
 	config.ConnectDB()
-	// models.Migrate()
+	models.Migrate()
 
 	app := fiber.New()
 	//cors
@@ -33,5 +33,6 @@ func main() {
 
 	
 
-	log.Fatal(app.Listen(":3000"))
+	app.Listen("0.0.0.0:3000")
+
 }

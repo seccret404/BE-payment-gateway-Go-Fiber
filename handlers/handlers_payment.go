@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/seccret404/BE-payment-gateway-Go-Fiber/models"
-	"github.com/seccret404/BE-payment-gateway-Go-Fiber/services"
+	"app/models"
+	"app/services"
 	"gorm.io/gorm"
 )
 

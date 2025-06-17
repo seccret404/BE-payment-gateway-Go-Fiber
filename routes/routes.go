@@ -2,7 +2,7 @@ package routes
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/seccret404/BE-payment-gateway-Go-Fiber/handlers"
+	"app/handlers"
 	"gorm.io/gorm"
 )
 

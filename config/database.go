@@ -12,19 +12,15 @@ import (
 
 var DB *gorm.DB
 
-func ConnectDB(){
+func ConnectDB() {
 	dsn := os.Getenv("DATABASE_URL")
-	if dsn == "" {
-		log.Fatal("Tidak dapat menemuan database url")
-	}
-
-	db , err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	if err != nil{
-		log.Fatal("Gagal connect ke DB")
+	db, err := retryConnectDB(dsn, 5, 2*time.Second)
+	if err != nil {
+		log.Fatal("Gagal connect ke DB setelah retry:", err)
 	}
 
 	sqlDB, err := db.DB()
-	if err != nil{
+	if err != nil {
 		log.Fatal("error", err)
 	}
 
@@ -35,4 +31,19 @@ func ConnectDB(){
 	DB = db
 
 	fmt.Println("Connected to databasee............")
+}
+
+
+func retryConnectDB(dsn string, maxRetries int, wait time.Duration) (*gorm.DB, error) {
+	var db *gorm.DB
+	var err error
+	for i := 0; i < maxRetries; i++ {
+		db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+		if err == nil {
+			return db, nil
+		}
+		log.Println("Gagal connect ke DB, retry dalam", wait)
+		time.Sleep(wait)
+	}
+	return nil, err
 }

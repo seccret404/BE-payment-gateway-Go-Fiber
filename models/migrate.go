@@ -1,6 +1,6 @@
 package models
 
-import "github.com/seccret404/BE-payment-gateway-Go-Fiber/config"
+import "app/config"
 
 func Migrate() {
 	err := config.DB.AutoMigrate(

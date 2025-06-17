@@ -8,8 +8,8 @@ import (
 	"github.com/google/uuid"
 	"github.com/midtrans/midtrans-go"
 	"github.com/midtrans/midtrans-go/snap"
-	"github.com/seccret404/BE-payment-gateway-Go-Fiber/models"
-	"github.com/seccret404/BE-payment-gateway-Go-Fiber/utils"
+	"app/models"
+	"app/utils"
 	"gorm.io/gorm"
 )
 
